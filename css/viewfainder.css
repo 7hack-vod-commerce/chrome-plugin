@@ -131,6 +131,7 @@ a:hover {
   box-shadow: 0.5vw 0.5vw 2vw rgba(0,0,0,0.8);
   background-color: rgba(0,0,0,0.8);
   width: 103%;
+  color:rgb(255,255,255); !important;
 }
 
 .prodboxco {
