@@ -29,7 +29,6 @@ body {
   right: 0;
   left: 0;
   /* fill parent */
-  background-color: deepskyblue;
   /* let's see it! */
   color: white;
   padding: 2.5%;
@@ -99,6 +98,7 @@ body {
   background-color: rgba(0,0,0,0.45);
   margin-bottom: 5%;
   padding: 0;
+  box-shadow: 0.5vw 0.5vw 2vw rgba(0,0,0,0.5);
 }
 
 .headboxco {
@@ -114,6 +114,14 @@ body {
   background-color: rgba(0,0,0,0.6);
   margin-bottom: 5%;
   position: relative;
+  box-shadow: 0.5vw 0.5vw 2vw rgba(0,0,0,0.5);
+  transition: width 0.3s;
+}
+
+.prodbox:hover {
+  box-shadow: 0.5vw 0.5vw 2vw rgba(0,0,0,0.8);
+  background-color: rgba(0,0,0,0.8);
+  width: 103%;
 }
 
 .prodboxco {
