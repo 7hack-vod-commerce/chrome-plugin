@@ -1,3 +1,17 @@
-{
-
-}
+[
+  {
+    "vendor": "maxdome",
+    "asset": {
+      "start": 100,
+      "end": 120,
+      "products": [
+        {
+          "category": "Clothes",
+          "detail": "Skirt",
+          "image": "https://raw.githubusercontent.com/7hack-vod-commerce/chrome-plugin/master/img/wegde.png",
+          "brand": "Gucci"
+        }
+      ]
+    }
+  }
+]

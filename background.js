@@ -30,7 +30,7 @@ chrome.browserAction.onClicked.addListener(function(tab) {
                           event: 'showViewFainderOverlay',
                           template: htmlTemplate
                         }, (response2) => {
-                          console.log('fainder overlay added');
+                          console.log('fAInder overlay added');
 
                         });
                       });
