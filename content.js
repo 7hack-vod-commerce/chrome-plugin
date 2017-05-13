@@ -1,14 +1,36 @@
-console.log('ASdaASDASDASDASDASDSD');
+let listenerAdded = false;
 
-chrome.runtime.onMessage.addListener( function(request, sender, sendResponse) {
-  console.log("something happening from the extension");
-  var data = request.data || {};
-  var linksList = document.querySelectorAll('a');
-  [].forEach.call(linksList, function(header) {
-    header.innerHTML = request.data;
-  });
-  sendResponse({data: data, success: true});
-  return true;
-});
+let listener2 = function(msg, sender, callback) {
+  if (msg.event === 'clickInital') {
+    console.log('called at ' + Date.now(), msg, sender);
+    jQuery('#player-controls--play-toggle').click();
 
-console.log('sfsdfdsfdsf')
+    jQuery('#player-controls--back-button').toggle();
+    jQuery('#player-controls--display-details').toggle();
+    jQuery('#player-controls--settings-control').toggle();
+    jQuery('#player-controls-playback-controls').toggle();
+
+
+    jQuery('#playerManualOverlay').remove();
+
+    // const arr = [1, 2, 3];
+    // const divs = arr.map(a => '<div style="z-index: 100000 !important; height: 300px">' + a + '<div>');
+    // let div = '<div style="z-index: 100000 !important; height: 300px">called at' + divs + '<div>';
+    // jQuery('#playerControls').append(msg.template);
+
+    var e = jQuery(msg.template);
+    jQuery('#playerControls').append(e);
+    e.attr('id', 'playerManualOverlay');
+
+
+    callback({ data: 'ok', success: true });
+  }
+};
+
+if (!listenerAdded) {
+  console.log('adding listener');
+  chrome.runtime.onMessage.addListener(listener2);
+  listenerAdded = true;
+}
+
+

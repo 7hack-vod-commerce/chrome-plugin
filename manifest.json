@@ -4,7 +4,10 @@
   "description": "Browser plugin to emulate native player behaviour",
   "background": {
     "persistent": false,
-    "scripts": ["background.js"]
+    "scripts": [
+      "libs/aws-sdk.js",
+      "background.js"
+    ]
   },
   "browser_action": {
     "default_icon": "icon.png",
@@ -13,11 +16,19 @@
   "permissions": [
     "activeTab"
   ],
+  "web_accessible_resources": ["html/*.html"],
   "content_scripts": [
     {
-      "matches": ["*://*/*"],
-      "css": ["css/styles.css"],
-      "js": ["content.js"]
+      "matches": [
+        "*://maxdome.de/*"
+      ],
+      "css": [
+        "css/styles.css"
+      ],
+      "js": [
+        "libs/jquery-3.2.1.min.js",
+        "content.js"
+      ]
     }
   ],
   "manifest_version": 2
