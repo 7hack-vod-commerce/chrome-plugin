@@ -17,11 +17,11 @@ a:visited {
 }
 
 a:focus {
-   color:inherit !important;
+   color:rgb(255,255,255); !important;
 }
 
 a:hover {
-   color:inherit !important;
+   color:rgb(255,255,255); !important;
 }
 
 
