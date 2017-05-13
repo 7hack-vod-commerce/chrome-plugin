@@ -9,6 +9,7 @@ let listener2 = function(msg, sender, callback) {
     jQuery('#player-controls--display-details').toggle();
     jQuery('#player-controls--settings-control').toggle();
     jQuery('#player-controls-playback-controls').toggle();
+    // jQuery('head').append('<link rel="stylesheet" type="text/css" href="https://raw.githubusercontent.com/7hack-vod-commerce/chrome-plugin/master/css/viewfainder.css">');
 
 
     jQuery('#playerManualOverlay').remove();
@@ -19,7 +20,10 @@ let listener2 = function(msg, sender, callback) {
     // jQuery('#playerControls').append(msg.template);
 
     var e = jQuery(msg.template);
-    jQuery('#playerControls').append(e);
+    jQuery('#playerControls')
+      .append(e);
+
+
     e.attr('id', 'playerManualOverlay');
 
 

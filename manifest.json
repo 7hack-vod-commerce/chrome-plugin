@@ -20,10 +20,10 @@
   "content_scripts": [
     {
       "matches": [
-        "*://maxdome.de/*"
+        "<all_urls>"
       ],
       "css": [
-        "css/styles.css"
+        "css/viewfainder.css"
       ],
       "js": [
         "libs/jquery-3.2.1.min.js",
