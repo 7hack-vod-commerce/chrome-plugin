@@ -16,6 +16,13 @@ a:visited {
    color:inherit;
 }
 
+a:focus {
+   color:inherit;
+}
+
+a:hover {
+   color:inherit;
+}
 
 
 .wrapper {
