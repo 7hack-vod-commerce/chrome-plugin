@@ -41,7 +41,7 @@ let listener2 = function(msg, sender, callback) {
 
     console.log(`Relative time is ${secondsTotal}`);
 
-    jQuery.getJSON('https://raw.githubusercontent.com/7hack-vod-commerce/chrome-plugin/master/testdata/mockdata.json', (results) => {
+    jQuery.getJSON('https://raw.githubusercontent.com/7hack-vod-commerce/chrome-plugin/master/testdata/mockdata2.json', (results) => {
       console.log(results);
       const template = jQuery(msg.template);
 
