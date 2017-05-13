@@ -53,7 +53,7 @@ let listener2 = function(msg, sender, callback) {
           template.find(`#prod${domId}title`).text(product.detail);
           template.find(`#prod${domId}company`).text(product.brand);
           template.find(`#prod${domId}img`).attr('src', product.image);
-          template.find(`#prod${domId}`).wrap(`<a href=“${product.url}” target=“_blank”></a>`);
+          template.find(`#prodbox${domId}`).wrap(`<a href="${product.url}" target="_blank"></a>`);
         }
       });
 

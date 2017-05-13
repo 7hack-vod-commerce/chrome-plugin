@@ -5,7 +5,6 @@
   "background": {
     "persistent": false,
     "scripts": [
-      "libs/aws-sdk.js",
       "libs/jquery-3.2.1.min.js",
       "background.js"
     ]
