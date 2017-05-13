@@ -32,6 +32,15 @@ let listener2 = function(msg, sender, callback) {
     jQuery('#player-controls--settings-control').hide();
     jQuery('#player-controls-playback-controls').hide();
 
+    const time = jQuery('.progress-timer-current').first().html().split(':');
+
+    const minutes = parseInt(time[0]);
+    const secondsRelative = parseInt(time[1]);
+
+    const secondsTotal = minutes * 60 + secondsRelative;
+
+    console.log(`Relative time is ${secondsTotal}`);
+
     jQuery.getJSON('https://raw.githubusercontent.com/7hack-vod-commerce/chrome-plugin/master/testdata/mockdata.json', (data) => {
       console.log(data);
       const template = jQuery(msg.template);
@@ -44,11 +53,13 @@ let listener2 = function(msg, sender, callback) {
           template.find(`#prod${domId}title`).text(product.detail);
           template.find(`#prod${domId}company`).text(product.brand);
           template.find(`#prod${domId}img`).attr('src', product.image);
-          jQuery('#playerControls').append(template);
-          template.attr('id', 'playerManualOverlay');
+          template.find(`#prod${domId}`).wrap(`<a href=“${product.url}” target=“_blank”></a>`);
         }
-        return callback({ status: 'ok' });
-      })
+      });
+
+      jQuery('#playerControls').append(template);
+      template.attr('id', 'playerManualOverlay');
+      return callback({ status: 'ok' });
     });
 
   }
