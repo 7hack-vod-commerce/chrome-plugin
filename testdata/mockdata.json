@@ -6,9 +6,39 @@
       "end": 120,
       "products": [
         {
+          "category": "Travel",
+          "detail": "Los Angeles",
+          "image": "https://www.lonelyplanet.com/travel-blog/tip-article/wordpress_uploads/2016/09/GettyImages-634466449_super-b2023f802fbe.jpg",
+          "brand": "USA"
+        }
+      ]
+    }
+  },
+  {
+    "vendor": "maxdome",
+    "asset": {
+      "start": 100,
+      "end": 120,
+      "products": [
+        {
+          "category": "Sunglasses",
+          "detail": "Aviator",
+          "image": "http://assets.ray-ban.com//is/image/RayBan/8053672495188_shad_fr?$440$",
+          "brand": "RayBan"
+        }
+      ]
+    }
+  },
+  {
+    "vendor": "maxdome",
+    "asset": {
+      "start": 100,
+      "end": 120,
+      "products": [
+        {
           "category": "Clothes",
           "detail": "Skirt",
-          "image": "https://raw.githubusercontent.com/7hack-vod-commerce/chrome-plugin/master/img/wegde.png",
+          "image": "https://eisraum.com/wp-content/uploads/2016/12/8b7b8fcb2315a3b4c748e2f0a3cde0ea.jpg",
           "brand": "Gucci"
         }
       ]

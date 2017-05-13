@@ -19,21 +19,29 @@ chrome.browserAction.onClicked.addListener(function(tab) {
               }, (response) => {
                 if (response.status === 'ok') {
                   chrome.tabs.captureVisibleTab(function(imageBinary) {
-                    jQuery.post(
-                      "http://10.100.126.230:3000/images",
-                      {
-                        base64Image: imageBinary
-                      },
-                      function(data) {
-                        console.log('took screenshot', data.url);
-                        chrome.tabs.sendMessage(tabs[0].id, {
-                          event: 'showViewFainderOverlay',
-                          template: htmlTemplate
-                        }, (response2) => {
-                          console.log('fAInder overlay added');
+                    // jQuery.post(
+                    //   "http://10.100.126.230:3000/images",
+                    //   {
+                    //     base64Image: imageBinary
+                    //   },
+                    //   function(data) {
+                    //     // console.log('took screenshot', data.url);
+                    //     chrome.tabs.sendMessage(tabs[0].id, {
+                    //       event: 'showViewFainderOverlay',
+                    //       template: htmlTemplate
+                    //     }, (response2) => {
+                    //       console.log('fAInder overlay added');
+                    //
+                    //     });
+                    //   });
+                    // console.log('took screenshot', data.url);
+                    chrome.tabs.sendMessage(tabs[0].id, {
+                      event: 'showViewFainderOverlay',
+                      template: htmlTemplate
+                    }, (response2) => {
+                      console.log('fAInder overlay added');
 
-                        });
-                      });
+                    });
                   });
                 }
               });
