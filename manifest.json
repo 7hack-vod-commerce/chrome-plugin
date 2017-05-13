@@ -1,0 +1,24 @@
+{
+  "name": "7Hack VoD-Commerce",
+  "version": "0.1",
+  "description": "Browser plugin to emulate native player behaviour",
+  "background": {
+    "persistent": false,
+    "scripts": ["libs/jquery-3.2.1.min.js", "background.js"]
+  },
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_title": "Hit me"
+  },
+  "permissions": [
+    "activeTab"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["*maxdome.de/*"],
+      "css": ["styles.css"],
+      "js": ["libs/jquery-3.2.1.min.js", "background.js"]
+    }
+  ],
+  "manifest_version": 2
+}
