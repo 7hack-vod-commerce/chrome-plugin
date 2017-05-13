@@ -8,6 +8,14 @@ body {
      box-sizing: border-box; 
 }
 
+a:link {
+   color:inherit;
+}
+
+a:visited {
+   color:inherit;
+}
+
 
 
 .wrapper {
