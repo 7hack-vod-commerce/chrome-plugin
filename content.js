@@ -41,13 +41,13 @@ let listener2 = function(msg, sender, callback) {
 
     console.log(`Relative time is ${secondsTotal}`);
 
-    jQuery.getJSON('https://raw.githubusercontent.com/7hack-vod-commerce/chrome-plugin/master/testdata/mockdata.json', (data) => {
-      console.log(data);
+    jQuery.getJSON('https://raw.githubusercontent.com/7hack-vod-commerce/chrome-plugin/master/testdata/mockdata.json', (results) => {
+      console.log(results);
       const template = jQuery(msg.template);
 
-      data[0].asset.products.forEach((product, idx) => {
+      results.forEach((result, idx) => {
         const domId = idx + 1;
-
+        const product = result.asset.products[0];
         if (domId < 5) {
           template.find(`#prod${domId}category`).text(product.category);
           template.find(`#prod${domId}title`).text(product.detail);
@@ -56,6 +56,7 @@ let listener2 = function(msg, sender, callback) {
           template.find(`#prodbox${domId}`).wrap(`<a href="${product.url}" target="_blank"></a>`);
         }
       });
+
 
       jQuery('#playerControls').append(template);
       template.attr('id', 'playerManualOverlay');
