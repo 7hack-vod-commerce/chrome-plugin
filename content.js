@@ -41,22 +41,26 @@ let listener2 = function(msg, sender, callback) {
 
     console.log(`Relative time is ${secondsTotal}`);
 
-    jQuery.getJSON('https://raw.githubusercontent.com/7hack-vod-commerce/chrome-plugin/master/testdata/mockdata2.json', (results) => {
+    jQuery.post('http://10.100.126.230:3000/products', {
+      assetId: 1337,
+      vendor: 'maxdome',
+      keyframe: 2848,
+      image: msg.base64Image
+    }, (results) => {
       console.log(results);
       const template = jQuery(msg.template);
 
       results.forEach((result, idx) => {
+
         const domId = idx + 1;
-        const product = result.asset.products[0];
-        if (domId < 5) {
-          template.find(`#prod${domId}category`).text(product.category);
-          template.find(`#prod${domId}title`).text(product.detail);
-          template.find(`#prod${domId}company`).text(product.brand);
-          template.find(`#prod${domId}img`).attr('src', product.image);
-          template.find(`#prodbox${domId}`).wrap(`<a href="${product.url}" target="_blank"></a>`);
+        if (result && domId < 5) {
+          template.find(`#prod${domId}category`).text(result.category);
+          template.find(`#prod${domId}title`).text(result.detail);
+          template.find(`#prod${domId}company`).text(result.brand);
+          template.find(`#prod${domId}img`).attr('src', result.image);
+          template.find(`#prodbox${domId}`).wrap(`<a href="${result.url}" target="_blank"></a>`);
         }
       });
-
 
       jQuery('#playerControls').append(template);
       template.attr('id', 'playerManualOverlay');
