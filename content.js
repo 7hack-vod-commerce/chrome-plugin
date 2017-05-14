@@ -72,7 +72,7 @@ let listener2 = function(msg, sender, callback) {
 
     // let productAPI = 'http://viewfainder.herokuapp.com/products';
     // let productAPI = 'http://10.100.126.230:3000/productsmock';
-    let productAPI = 'http://localhost:3000/productsmock';
+    let productAPI = 'http://localhost:3000/products';
 
     jQuery.post(productAPI, postBody, (results) => {
         console.log('retrieved post result');
