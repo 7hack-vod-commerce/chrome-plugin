@@ -11,7 +11,7 @@
     ]
   },
   "browser_action": {
-    "default_icon": "icon.png",
+    "default_icon": "img/icondark.png",
     "default_title": "Hit me"
   },
   "permissions": [
