@@ -49,35 +49,52 @@ let listener2 = function(msg, sender, callback) {
     console.log(`Relative time is ${secondsTotal}`);
     console.log(msg.loader);
 
-    const template = jQuery(msg.loader);
-    jQuery('#playerControls').append(template);
-    template.attr('id', 'playerLoader');
+    const loaderTemplate = jQuery(msg.loader);
+    jQuery('#playerControls').append(loaderTemplate);
+    loaderTemplate.attr('id', 'playerLoader');
 
-    jQuery.post('http://viewfainder.herokuapp.com/products', {
+    let postBody = {
       assetId: 1337,
       vendor: 'maxdome',
       keyframe: secondsTotal,
       image: msg.base64Image
-    }, (results) => {
-      console.log(results);
-      jQuery('#playerLoader').remove();
-      const template = jQuery(msg.template);
+    };
 
-      results.forEach((result, idx) => {
-        const domId = idx + 1;
-        if (result && domId < 5) {
-          template.find(`#prod${domId}category`).text(result.category);
-          template.find(`#prod${domId}title`).text(result.detail);
-          template.find(`#prod${domId}company`).text(result.brand);
-          template.find(`#prod${domId}img`).attr('src', result.image);
-          template.find(`#prodbox${domId}`).wrap(`<a href="${result.url}" target="_blank"></a>`);
-        }
+    console.log(postBody);
+
+    // setTimeout(() => {
+    //   jQuery('#playerLoader').remove();
+    //   const template = jQuery(msg.template);
+    //   jQuery('#playerControls').append(template);
+    //   template.attr('id', 'playerManualOverlay');
+    //   return callback({ status: 'ok' });
+    // }, 2000);
+
+    let productAPI = 'http://viewfainder.herokuapp.com/productsmock';
+    // let productAPI = 'http://10.100.126.230:3000/productsmock';
+
+    jQuery.post(productAPI, postBody, (results) => {
+        console.log('retrieved post result');
+        console.log(results);
+        jQuery('#playerLoader').remove();
+        const template = jQuery(msg.template);
+
+        results.forEach((result, idx) => {
+
+          const domId = idx + 1;
+          if (result && domId < 5) {
+            template.find(`#prod${domId}category`).text(result.category);
+            template.find(`#prod${domId}title`).text(result.detail);
+            template.find(`#prod${domId}company`).text(result.brand);
+            template.find(`#prod${domId}img`).attr('src', result.image);
+            template.find(`#prodbox${domId}`).wrap(`<a href="${result.url}" target="_blank"></a>`);
+          }
+        });
+
+        jQuery('#playerControls').append(template);
+        template.attr('id', 'playerManualOverlay');
+        return callback({ status: 'ok' });
       });
-
-      jQuery('#playerControls').append(template);
-      template.attr('id', 'playerManualOverlay');
-      return callback({ status: 'ok' });
-    });
 
   }
 };

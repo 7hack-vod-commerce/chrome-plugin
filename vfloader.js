@@ -109,9 +109,9 @@
 	}
 	
 	// Get canvas
-	canvas = document.getElementById("coinAnimation");
-	canvas.width = 180;
-	canvas.height = 180;
+	// canvas = document.getElementById("coinAnimation");
+	// canvas.width = 180;
+	// canvas.height = 180;
 	
 	// Create sprite sheet
 	coinImage = new Image();	
