@@ -8,6 +8,7 @@ let listener2 = function(msg, sender, callback) {
 
   if (msg.event === 'continueVideo') {
     jQuery('#playerManualOverlay').remove();
+    jQuery('#playerLoader').remove();
     jQuery('#player-controls--back-button').show();
     jQuery('#player-controls--display-details').show();
     jQuery('#player-controls--settings-control').show();
@@ -34,24 +35,35 @@ let listener2 = function(msg, sender, callback) {
 
     const time = jQuery('.progress-timer-current').first().html().split(':');
 
-    const minutes = parseInt(time[0]);
-    const secondsRelative = parseInt(time[1]);
+    let hoursRelative = 0;
 
-    const secondsTotal = minutes * 60 + secondsRelative;
+    const minutes = time.length === 2 ? parseInt(time[0]) : parseInt(time[1]);
+    const secondsRelative = time.length === 2 ? parseInt(time[1]) : parseInt(time[2]);
+
+    if (time.length === 3) {
+      hoursRelative = parseInt(time[0])
+    }
+
+    const secondsTotal = hoursRelative * 3600 + minutes * 60 + secondsRelative;
 
     console.log(`Relative time is ${secondsTotal}`);
+    console.log(msg.loader);
 
-    jQuery.post('http://10.100.126.230:3000/products', {
+    const template = jQuery(msg.loader);
+    jQuery('#playerControls').append(template);
+    template.attr('id', 'playerLoader');
+
+    jQuery.post('http://viewfainder.herokuapp.com/products', {
       assetId: 1337,
       vendor: 'maxdome',
-      keyframe: 2848,
+      keyframe: secondsTotal,
       image: msg.base64Image
     }, (results) => {
       console.log(results);
+      jQuery('#playerLoader').remove();
       const template = jQuery(msg.template);
 
       results.forEach((result, idx) => {
-
         const domId = idx + 1;
         if (result && domId < 5) {
           template.find(`#prod${domId}category`).text(result.category);

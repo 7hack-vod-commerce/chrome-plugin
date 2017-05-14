@@ -128,7 +128,7 @@
 	
 	// Load sprite sheet
 	coinImage.addEventListener("load", gameLoop);
-	coinImage.src = "img/vfloader_sprite.png";
+	coinImage.src = "https://raw.githubusercontent.com/7hack-vod-commerce/chrome-plugin/master/img/vfloader_sprite.png";
 
 } ());
 
