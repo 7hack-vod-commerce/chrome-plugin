@@ -1,0 +1,55 @@
+body {
+  font-family: 'Raleway', sans-serif;
+}
+
+* { 
+    -moz-box-sizing: border-box; 
+    -webkit-box-sizing: border-box; 
+     box-sizing: border-box; 
+}
+
+
+.wrapper {
+  width: 90%;
+  /* whatever width you want */
+  display: inline-block;
+  position: relative;
+}
+
+.wrapper:after {
+  padding-top: 56.25%;
+  /* 16:9 ratio */
+  display: block;
+  content: '';
+}
+
+
+.main2 {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  /* fill parent */
+  /* let's see it! */
+  color: white;
+  padding: 2.5%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
